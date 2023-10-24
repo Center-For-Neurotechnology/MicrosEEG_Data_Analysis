@@ -1,9 +1,9 @@
 clear
-addpath(genpath('Y:\StimDataBackup\Code_Stimulation'))
-DIRIntan='Y:\IntraOp_Micro\MicroPigData\061019_Pig case\Recording files\';
-load('Y:\IntraOp_Micro\MicroPigData\061019_Pig case\Recording files\ExtractedMatlabData_pig1_protocol3_trial1_yrle037_6000ua_190610_174636\TrialsStim.mat')
+addpath(genpath('Y:\XXXXXX\Code_Stimulation'))
+DIRIntan='Y:\XXXXXX\Recording files\';
+load('Y:\XXXXXX\TrialsStim.mat')
 
-addpath(genpath(['Y:\IntraOp_Micro\Papers_Published_Inprogress\PEDOTPtNRDepthLaminarPaper\Code\']))
+addpath(genpath(['Y:\XXXXXX\Code\']))
 RHDDir=dir([DIRIntan,'*.rhd']);
 % ChanImpedances=zeros(64,1);
 TrialsData=[];TrialsDataPow=[];
@@ -119,32 +119,32 @@ end
 baselineRange=1:950;MeasureRange=1010:2000;FS=1000;
 [PVLAllcds,h6cds,PVLcds,h3cds,Meanpowcds]=StatsCheckValues(CDSAll,TrialsAllAcross,baselineRange,MeasureRange,FS);
 
-save(['Z:\IntraOp_Micro\MicroPigData\061019_Pig case\Recording files\StatsInfoCDS'],...
+save(['Z:\XXXXXX\Recording files\StatsInfoCDS'],...
     'PVLAllcds','h6cds','PVLcds','h3cds','CDSAll','TrialsAllAcross','Meanpowcds')
 
 baselineRange=1:45;MeasureRange=51:200;FS=100;
 [PVLAllpow6,h6pow6,PVLpow6,h3pow6,Meanpow6]=StatsCheckValues(Pow6All,TrialsAllAcross,baselineRange,MeasureRange,FS);
 
-save(['Z:\IntraOp_Micro\MicroPigData\061019_Pig case\Recording files\StatsInfoPow6'],...
+save(['Z:\XXXXXX\Recording files\StatsInfoPow6'],...
     'PVLAllpow6','h6pow6','PVLpow6','h3pow6','Pow6All','TrialsAllAcross','Meanpow6')
 
 baselineRange=1:95;MeasureRange=102:400;FS=200;
 [PVLAllmua,h6mua,PVLmua,h3mua,Meanpowmua]=StatsCheckValues(PowMUAAll,TrialsAllAcross,baselineRange,MeasureRange,FS);
 
-save(['Y:\IntraOp_Micro\MicroPigData\061019_Pig case\Recording files\StatsInfoCDS'],...
+save(['Z:\XXXXXX\Recording files\StatsInfoCDS'],...
     'PVLAllmua','h6mua','PVLmua','h3mua','PowMUAAll','TrialsAllAcross','Meanpowmua')
 
 
 baselineRange=1:45;MeasureRange=51:200;FS=100;
 [PVLAllpow4,h6pow4,PVLpow4,h3pow4,Meanpow4]=StatsCheckValues(Pow4All,TrialsAllAcross,baselineRange,MeasureRange,FS);
 
-save(['Y:\IntraOp_Micro\MicroPigData\061019_Pig case\Recording files\StatsInfoPow4'],...
+save(['Z:\XXXXXX\Recording files\StatsInfoPow4'],...
     'PVLAllpow4','h6pow4','PVLpow4','h3pow4','Pow4All','TrialsAllAcross','Meanpow4')
 
 baselineRange=1:45;MeasureRange=51:200;FS=100;
 [PVLAllpow5,h6pow5,PVLpow5,h3pow5,Meanpow5]=StatsCheckValues(Pow5All,TrialsAllAcross,baselineRange,MeasureRange,FS);
 
-save(['Y:\IntraOp_Micro\MicroPigData\061019_Pig case\Recording files\StatsInfoPow5'],...
+save(['Z:\XXXXXX\Recording files\StatsInfoPow5'],...
     'PVLAllpow5','h6pow5','PVLpow5','h3pow5','Pow5All','TrialsAllAcross','Meanpow5')
 
 pause
@@ -158,9 +158,9 @@ pause
 
 
 clf
-addpath(genpath('Y:\Projects\Lab_Materials\Analysis_Tools_and_Software\ExampleCodeRunning\shadedErrorBar\'))
+addpath(genpath('Y:\XXXXXX\shadedErrorBar\'))
 
-addpath(genpath('Y:\Projects\Lab_Materials\Analysis_Tools_and_Software\ExampleCodeRunning\bipolar_colormap'))
+addpath(genpath('Y:\XXXXXX\bipolar_colormap'))
 colormap(bipolar2(255))
 curr=unique(TrialsDataPow3(:,2) );
 sBT=.9;
@@ -229,7 +229,7 @@ for cu=1:8
     % clf
 end
 
-%  print(gcf,'-dpng','-r600',['Z:\IntraOp_Micro\MicroPigData\061019_Pig case\Recording files\ResponsesAlongDepth',Signal])
+%  print(gcf,'-dpng','-r600',['Z:\XXXXXX\Recording files\ResponsesAlongDepth',Signal])
 
 %%
 Channel=1;
@@ -311,7 +311,7 @@ for Channel=1:22
     % clf
 end
 
-%  print(gcf,'-dpng','-r600',['Z:\IntraOp_Micro\MicroPigData\061019_Pig case\Recording files\ResponsesAcrossChannelsStats',Signal])
+%  print(gcf,'-dpng','-r600',['Z:\XXXXXX\Recording files\ResponsesAcrossChannelsStats',Signal])
 
 
 
@@ -405,32 +405,6 @@ for mwn=1:5
         end
     end
 
-%         for CW=1:length(currw)
-%             FI=find(MeanMp(:,1)>1 & MeanMp(:,2)==currw(CW));
-% MN=MeanMp(FI,:);
-% [p,h,stats]=kruskalwallis(MN(:,8),MN(:,1),'off');
-%  multcompare(stats)
-% p
-% pause 
-% clf
-%         end
-
-%     MTriw=[[MTriw [NaN*ones(size(MTriw,1),1)]];NaN*ones(1,size(MTriw,2)+1)]
-%     pcolor(1:length(currw)+0,1:length(chem)+0,MTriw')
-%     shading flat
-%     colorbar
-%     if mwn==1
-%     caxis([-6 3])
-%     end
-%     if mwn>1
-%     caxis([-1 1])
-%     end
-% for ch=2:22
-% errorbar(MTriw(:,ch),MTriwst(:,ch),'CapSize',0,'color',COLChan(ch,:),'linewidth',2)
-% hold on
-% end
-% box off
-
 for cu=1:8
 errorbar(MTriw(cu,:),1:22,MTriwst(cu,:), ...
     'horizontal',...
@@ -443,32 +417,8 @@ xlim([0 1.0])
 
 end
 
-% subplot(1,2,2)
-% MTriw=[];
-% for CW=1:length(currw)
-%     for ch=1:length(chem)
-%      FI=find(MeanMp(:,1)==chem(ch) & MeanMp(:,2)==currw(CW));   
-% MTriw(CW,ch)=nanmean(MeanMp(FI,9),1);
-%     end
-% end
-% MTriw=[[MTriw [NaN*ones(size(MTriw,1),1)]];NaN*ones(1,size(MTriw,2)+1)]
-% pcolor(1:length(currw)+1,1:length(chem)+1,MTriw')
-% shading flat
-% colorbar
 
-% for Channel=1:22
-%     FI=find(MeanMp(:,1)==Channel);
-%     PlotV=MeanMp(FI,6:end);
-% 
-%     currentSteps=PowPlot(FI,2);
-%     hsC=hs(Channel,2:end);
-%     hsC(-1+(1:size(PlotV,2)/2)/fs<.021)=NaN;
-%     %    stem(-bls+(1:size(PlotV,2)/2)'/fs,STEP*currst+5+hsC', ...
-%     %        '.','linewidth',2,'color',[.8 .8 .8])
-% 
-%     for currst=1:8
-%         %         fiC=find(currentSteps==curr(currst));
-% Meanpowcds
+
 %     end
 % 
 % end
